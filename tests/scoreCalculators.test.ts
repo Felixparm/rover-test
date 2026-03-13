@@ -74,12 +74,12 @@ describe('ScoreCalculator - calculateSearchScore', () => {
         calculator = new ScoreCalculator();
     });
 
-    it('should return search score when there us no review', () => {
+    it('should return profile score when there is no review', () => {
         const scores = { profileScore: 3.5, ratingsScore: 4.5, numberOfReviews: 0 };
         expect(calculator.calculateSearchScore(scores.profileScore, scores.ratingsScore, scores.numberOfReviews)).toBe(scores.profileScore);
     });
 
-    it('should return search score when there is no review', () => {
+    it('should return rating score when there is 10 reviews (or more)', () => {
         const scores = { profileScore: 3.5, ratingsScore: 4.5, numberOfReviews: 10 };
         expect(calculator.calculateSearchScore(scores.profileScore, scores.ratingsScore, scores.numberOfReviews)).toBe(scores.ratingsScore);
     });
