@@ -13,7 +13,7 @@ describe("SitterScoreService", () => {
             calculateProfileScore: jest.fn(),
             calculateRatingsScore: jest.fn(),
             calculateSearchScore: jest.fn()
-        } as any
+        } as jest.Mocked<ScoreCalculator>
 
         service = new SitterScoreService(mockCalculator)
     })
