@@ -1,5 +1,6 @@
-import { groupReviewsBySitter } from "../src/cli/main";
+
 import { Review } from "../src/domain/Review";
+import { groupReviewsBySitter } from "../src/utils/groupReviewBySitters";
 
 describe('groupReviewsBySitter', () => {
 
