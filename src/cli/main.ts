@@ -2,6 +2,7 @@ import { CsvRepository } from "../infrastructure/CsvRepository";
 import { Sitter } from "../domain/Sitter";
 import { Review } from "../domain/Review";
 import { ScoreCalculator } from "../services/scoreCalculators";
+import { CsvWriter, OutputData } from "../infrastructure/CsvWriter";
 
 export function groupReviewsBySitter(reviews: Review[]): Sitter[] {
 
@@ -35,7 +36,7 @@ async function main() {
 
   const sitters = groupReviewsBySitter(reviews);
   const scoreCalculator = new ScoreCalculator();
-  const result = sitters.map(sitter => {
+  const result: OutputData[] = sitters.map(sitter => {
 
     const profileScore = scoreCalculator.calculateProfileScore(sitter.name);
     const ratingsScore = scoreCalculator.calculateRatingsScore(sitter.reviews.map(review => review.rating));
@@ -54,7 +55,8 @@ async function main() {
     }
     return a.name.localeCompare(b.name);
   })
-  console.table(result);
+  const writer = new CsvWriter();
+  writer.write("result/output.csv", result);
 }
 
 main();
