@@ -20,7 +20,6 @@ export class CsvRepository {
                     reviews.push(review);
                 })
                 .on("end", () => {
-                    console.log(reviews)
                     resolve(reviews);
                 })
                 .on("error", reject);
