@@ -3,6 +3,7 @@ import { Sitter } from "../domain/Sitter";
 import { Review } from "../domain/Review";
 import { ScoreCalculator } from "../services/scoreCalculators";
 import { CsvWriter, OutputData } from "../infrastructure/CsvWriter";
+import { sortSitters } from "../utils/sortSitters";
 
 export function groupReviewsBySitter(reviews: Review[]): Sitter[] {
 
@@ -49,12 +50,8 @@ async function main() {
       ratingsScore,
       searchScore
     };
-  }).sort((a, b) => {
-    if (b.searchScore !== a.searchScore) {
-      return b.searchScore - a.searchScore;
-    }
-    return a.name.localeCompare(b.name);
   })
+  sortSitters(result)
   const writer = new CsvWriter();
   writer.write("result/output.csv", result);
 }
