@@ -13,7 +13,7 @@ async function main() {
 
   const writer = new CsvWriter()
 
-  const reviews = await repository.loadReviews("./tests/data/reviews.csv")
+  const reviews = await repository.loadReviews("./files/initial/reviews.csv")
 
   const sitters = groupReviewsBySitter(reviews)
 
@@ -21,7 +21,7 @@ async function main() {
 
   sortSitters(results)
 
-  writer.write("result/sitters.csv", results)
+  writer.write("files/result/sitters.csv", results)
 
 }
 

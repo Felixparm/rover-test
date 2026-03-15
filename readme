@@ -1,0 +1,49 @@
+Rover Technical Test
+
+Description 
+
+This project processes sitter reviews from a CSV file and computes ranking scores for each sitter.
+
+The program:
+
+- Loads reviews from a CSV file
+
+- Groups reviews by sitter
+
+- Computes three scores for each sitter:
+
+   Profile score 
+   Ratings score
+   Search score
+
+- Sorts sitters based on the computed search score
+
+- Generates a final CSV file containing the ranked sitters
+
+Requirements
+
+Node.js >= 18
+
+npm
+
+Installation:
+
+npm install
+
+Running the project
+
+To run the program:
+
+npm run start
+
+The program will:
+
+Load the reviews from the input CSV file (/files/initial/reviews.csv)
+
+Compute sitter scores
+
+Sort sitters by search score
+
+Generate an output file named:
+
+sitters.csv (/files/result/sitters.csv)

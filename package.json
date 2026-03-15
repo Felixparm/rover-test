@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "rm -f result/sitters.csv && ts-node src/cli/main.ts",
+    "start": "rm -f files/result/sitters.csv && ts-node src/cli/main.ts",
     "build": "tsc",
     "test": "jest"
   },
