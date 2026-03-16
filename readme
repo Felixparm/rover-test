@@ -47,3 +47,57 @@ Sort sitters by search score
 Generate an output file named:
 
 sitters.csv (/files/result/sitters.csv)
+
+Questions 
+
+1. How would you adjust the calculation and storage of search scores in a production application?
+
+In a production system, search scores would likely not be calculated every time a user performs a search. Instead, scores could be precomputed and stored in a database or cache.
+
+2. Frontend implementation to display sitters and manage state
+
+I would build the frontend using a framework such as React.
+
+The frontend would fetch sitter data from a backend API and display a list of sitters along with their scores.
+
+For data fetching and server state management, I would use TanStack Query. It simplifies API requests, caching, and background updates.
+
+The frontend would manage:
+
+the list of sitters returned by the API
+loading and error states
+user interactions such as filters, sorting, or pagination
+
+When a user interacts with the page (for example applying filters or navigating through pages), the frontend would trigger a new API request. TanStack Query would handle caching and refetching to keep the UI responsive and efficient.
+
+3. Infrastructure choices to run this application at scale
+
+To support a peak of around 10 searches per second, the application could be deployed on a cloud platform such as Amazon Web Services.
+
+For example, the infrastructure could include:
+
+A relational database such as PostgreSQL to store sitter data and reviews.
+
+A caching layer to store frequently accessed search results and improve response times.
+
+4. API design for a backend service
+
+The backend would expose REST API endpoints that allow the frontend to retrieve sitter data and search results.
+
+For example:
+
+GET /api/sitters
+Returns a list of sitters and their computed scores.
+
+GET /api/sitters?search=searchString&page=3 (exemple)
+Returns paginated and filtered sitter search results.
+
+The API response would include relevant information such as:
+
+sitter name
+sitter email
+profile score
+rating score
+search score
+
+The backend would handle the ranking logic, while the frontend would focus on displaying the data and managing user interactions.
